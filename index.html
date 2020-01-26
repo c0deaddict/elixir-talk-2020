@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>A sip of Elixir</title>
+<meta name="author" content="(Jos van Bakel)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js-3.9.2/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js-3.9.2/css/theme/moon.css" id="theme"/>
+
+<link rel="stylesheet" href="custom.css"/>
+<link rel="stylesheet" href="monokai.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js-3.9.2/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">A sip of Elixir</h1><h2 class="author">Jos van Bakel</h2><p class="date">Created: 2020-05-29 Fri 09:08</p>
+</section>
+
+<section>
+<section id="slide-orge9c834b">
+<h2 id="orge9c834b">Pre</h2>
+<ul>
+<li>Please mute your mic</li>
+<li>Ask questions through chat</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org88d6d76">
+<h2 id="org88d6d76">Agenda</h2>
+<ul>
+<li>What is it?</li>
+<li>Why?</li>
+<li>A bit of history</li>
+<li>What's different?</li>
+<li>Short tour</li>
+<li>Demo</li>
+<li>Showcases</li>
+<li>Conclusion</li>
+
+</ul>
+
+<aside class="notes">
+<ul>
+<li>What is it: short explanation of what Elixir is.</li>
+<li>Why am I giving this presentation?</li>
+<li>Short history about Elixir and Erlang.</li>
+<li>What makes Elixir different from other programming languages?</li>
+<li>Short tour of the features that makes it different</li>
+<li>Demo!</li>
+<li>I will highlight some companies that use Erlang in production</li>
+<li>Conclusion</li>
+
+</ul>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org5cf69eb">
+<h2 id="org5cf69eb">What is it?</h2>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Kotlin</th>
+<th scope="col" class="org-left">Elixir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><i>Primary</i></td>
+<td class="org-left">Java</td>
+<td class="org-left">Erlang</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>Others</i></td>
+<td class="org-left">Groovy, Scala</td>
+<td class="org-left">LFE, Alpaca</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>VM</i></td>
+<td class="org-left">JVM</td>
+<td class="org-left">BEAM</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="figure">
+<p><img src="./images/ecosystem.png" alt="ecosystem.png" width="25%" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Erlang ecosystem</p>
+</div>
+
+<aside class="notes">
+<p>
+Elixir is like Kotlin or Scala: a programming language running on a VM
+that has another primary programming language. What Java is for
+Kotlin, Erlang is for Elixir. And the same applies to the JVM and
+BEAM: the VM on which Erlang bytecode runs.
+</p>
+
+<p>
+Elixir can call Erlang code just like you can call Java functions from
+Kotlin (and vice versa). Throughout this presentation I'm using the
+words Elixir and Erlang mostly interchangeably.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org5cf69eb-split">
+
+<h2>What is it?</h2>
+
+<ul>
+<li>Concurrent</li>
+<li>Highly available</li>
+<li>Distributed</li>
+<li>Scalable</li>
+<li>Fault tolerant</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Elixir, Erlang and BEAM are an ideal language and platform to create
+applications or systems with these properties. I will explain why that
+is in this presentation and in the demo that will come at the end.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org5cf69eb-split">
+
+<h2>What is it?</h2>
+
+
+
+<aside class="notes">
+<p>
+Elixir also has these properties, in this presentation I'm not going
+to focus much on this. 
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd024018">
+<h2 id="orgd024018">Why?</h2>
+<ul>
+<li class="fragment appear">Advent of Code 2019</li>
+<li class="fragment appear">Vialer Middleware rewrite (VMex)</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Each year I participate in the AoC. Each year I pester everyone to
+also join. It is just an awesome challenge. Each year I pick a
+programming language that I haven't used, and try to solve the puzzles
+with it, and while doing that learn a part of the language.
+</p>
+
+<p>
+Elixir and Erlang have been on my radar for a while. In 2009 I read
+the book "Programming Erlang - Software for a concurrent world". I was
+fascinated by it. But I did not understand how to make applications in
+Erlang. It was too different from what I was used to: Java and PHP.
+</p>
+
+<p>
+Ten years later, and a lot of languages in between, it now makes sense
+to me. Learning Haskell and Clojure have laid a good foundation for
+functional programming with recursion and immutable data structures.
+</p>
+
+<p>
+The AoC is nice for learning the basic syntax and standard
+library. But to really learn Elixir I needed an real application or
+system to build. For this I picked the Vialer middleware. Since
+January I have made rewrite of the Vialer middleware in Elixir as my
+10% project.
+</p>
+
+<p>
+My goal with this presentation is:
+</p>
+<ul>
+<li>Spark interest in Elixir and Erlang</li>
+<li>Convince everyone that the Erlang ecosystem is useful for Spindle</li>
+
+</ul>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org522c888">
+<h2 id="org522c888">A bit of history</h2>
+
+<div class="figure">
+<p><img src="./images/history.jpg" alt="history.jpg" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+In 1986 Ericsson is trying to solve the problem of reliable phone
+switching. The most important success criterion is that such
+applications <b>have to have zero downtime</b>. In the words of late Joe
+Armstrong, one of the founding fathers of Erlang: <b>it was a quest to
+write programs that run forever</b>. The outcome of this effort was
+Erlang.
+</p>
+
+<p>
+Erlang was open sourced in 1998 it slowly found it's way into
+high-volume internet applications that involve messaging and
+distributed computing. Several big projects chose Erlang as a language
+to build upon: RabbitMQ, CouchDB, ejabberd, WhatsApp. The mindset that
+went into creating Erlang (zero downtime, concurrent, scalable)
+aligned well with web-scale applications.
+</p>
+
+<p>
+Erlang is a big of strange language. It scored high on the "most
+dreaded" languages in the Stack Overflow developer survey
+of 2019. Erlang has a weird syntax inspired by Prolog: symbols
+starting with a lowercase letter are constants (atoms). Variables
+start with an uppercase letter. It has no support for meta programming
+resulting in repeated code. Documentation is hard to read.
+</p>
+
+<p>
+Elixir is created by José Valim in 2011. His goal was to create a
+language that enabled higher extensibility and productivity in the
+Erlang ecosystem, while keeping compatibility with it. Elixir is on
+place number 8 in the most loved languages (stack overflow survey).
+</p>
+
+<p>
+What makes Elixir great?
+</p>
+<ul>
+<li>Focus on programmer happiness</li>
+<li>Much easier Ruby-like syntax</li>
+<li>Great documentation</li>
+<li>Great tooling (mix: deps, build, test, release)</li>
+<li>Metaprogramming: macro's and compile time polymorphism</li>
+
+</ul>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgef0c5d0">
+<h2 id="orgef0c5d0">What's different?</h2>
+
+<div class="figure">
+<p><img src="./images/let-it-crash.png" alt="let-it-crash.png" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+What makes Elixir different from other programming languages?
+</p>
+
+<p>
+We've all seen it:
+</p>
+<ul>
+<li>Java programs crashing with NullPointerException's</li>
+<li>C and Go with segmentation faults</li>
+<li>Python with KeyError</li>
+<li>etc.</li>
+
+</ul>
+
+<p>
+What makes Elixir different is that it embraces failure. The motto of
+Erlang is "Let it Crash". This sounds dangerous, but thanks to the
+BEAM runtime (the virtual machine), failure can be scoped and dealt
+with inside the application at a granularity defined by the developer.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orge69b70e">
+<h3 id="orge69b70e">Why does restarting work?</h3>
+
+<div class="figure">
+<p><img src="./images/off-and-on.jpg" alt="off-and-on.jpg" width="50%" />
+</p>
+</div>
+
+<blockquote >
+<p>
+131 out of 132 bugs are transient bugs &#x2013; Jim Gray in Why Do Computers
+Stop and What Can Be Done About It? (1985)
+</p>
+</blockquote>
+
+<aside class="notes">
+<p>
+Elixir deals with failure in a very simple way, by turning it off and
+on again. This may sound too simple, but it has proven very
+effective. Just like failures can be contained to a desired part of
+the system, so can the restarts that follow.
+</p>
+
+<p>
+Why does restarting work at all?
+</p>
+
+<p>
+According to a paper on software failures by Jim Gray (1985, old but
+still relevant), software bugs can be divided in two kinds:
+</p>
+
+<p>
+Bohrbugs: are simple, repeatable and easily triggered. Like the Bohr
+atom, are solid, easily detected by standard techniques, and hence
+boring. They are likely to be caught in testing and thus don't often
+reach production.
+</p>
+
+<p>
+The other kind are Heisenbugs: bugs that seem to disappear when you
+look at them. Just like the Heisenberg uncertainty principle. These
+bugs are usually dependent on many different factors and thus
+difficult to reproduce. For these bugs retrying (restarting) is often
+the best solution.
+</p>
+
+<p>
+According to the paper, the Mean Time Between Failures (MTBF) of
+systems handling bugs in this way better by a factor of 4.
+</p>
+
+<p>
+Turning it off and on again is the right approach. Of course this is
+not a carte blanche to ignore all these Heisenbugs, they still need to
+be investigated.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org042061c">
+<h2 id="org042061c">Short tour</h2>
+<aside class="notes">
+<p>
+For the sake of brevity I'm going to skip a general introduction of
+the Elixir syntax. The focus will be on the abstractions that make the
+language unique.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org6711559">
+<h3 id="org6711559">Processes</h3>
+<div class="vertical-split"><div>
+
+<div class="org-src-container">
+<label class="org-src-name">Spawn</label>
+<pre class="fragment (appear)"><code class="elixir" >iex&gt; pid = spawn(fn -&gt; 1 + 2 end)
+#PID&lt;0.44.0&gt;
+
+iex&gt; Process.alive?(pid)
+false
+</code></pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">Kill</label>
+<pre class="fragment (appear)"><code class="elixir" >iex&gt; pid = spawn(fn -&gt;
+  Process.sleep(:infinity)
+end)
+#PID&lt;0.44.0&gt;
+
+iex&gt; Process.alive?(pid)
+true
+
+iex&gt; Process.exit(pid, :kill)
+true
+</code></pre>
+</div>
+
+</div><div>
+
+<div class="org-src-container">
+<label class="org-src-name">Isolation</label>
+<pre class="fragment (appear)"><code class="elixir" >iex&gt; x = 1
+
+iex&gt; Task.async(fn -&gt; x = 3 end) |&gt; Task.await
+3
+
+iex&gt; x
+1
+</code></pre>
+</div>
+
+</div></div>
+
+<aside class="notes">
+<p>
+Processes are the core abstraction in Elixir.
+</p>
+
+<p>
+These are <b>NOT</b> OS processes. They are more like Green Threads,
+Fibers, Go routines. BEAM uses one OS process per scheduler and one
+scheduler per CPU core.
+</p>
+
+<p>
+Creating processes is fast and cheap (limit is about 130M). This will
+be shown in the demo.
+</p>
+
+<p>
+Processes are fully isolated: they share nothing, not even memory, not
+even a garbage collector. This isolation is good because it guarantees
+that a dying process keeps issues to itself, it can't corrupt memory
+of other processes.
+</p>
+
+<p>
+BEAM uses preemptive scheduling, this means that it does not depend on
+the program to "behave" (voluntarily giving up execution, most
+programming languages implemenent cooperative scheduling). This
+promotes fairness between scheduling of processes and gives the
+runtime a soft-realtime behaviour. More on this later.
+</p>
+
+<p>
+Explain code above.
+</p>
+<ul>
+<li>iex = Elixir REPL</li>
+<li>PID = Process ID</li>
+<li>Calling process immediately continues</li>
+
+</ul>
+
+</aside>
+
+</section>
+<section id="slide-org114e47b">
+<h3 id="org114e47b">Message passing</h3>
+<div class="vertical-split"><div>
+
+<div class="org-src-container">
+<label class="org-src-name">Process A</label>
+<pre><code class="elixir" >send(
+  process_b,
+  {:hello, self()}
+)
+
+receive do
+  reply -&gt;
+    IO.puts(reply)
+end
+</code></pre>
+</div>
+
+</div><div>
+
+<div class="org-src-container">
+<label class="org-src-name">Process B</label>
+<pre><code class="elixir" >receive do
+  {:hello, from} -&gt;
+    send(from, "Hello there")
+
+  other -&gt;
+    handle(other)
+end
+</code></pre>
+</div>
+
+</div></div>
+
+<aside class="notes">
+<p>
+Processes communicate via messages. Each process has it's own
+mailbox. Everyone can write to it, but only the owner can read from
+it. Messages are normally handled in the order they are received. But
+with pattern matching, specific messages can be picked from the mailbox.
+</p>
+
+<p>
+Messages are pure data, they cannot contain references to memory. In
+the example a two-tuple with an atom (constant) and a process ID (of
+process a) is sent as message.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgd0cbe5a">
+<h3 id="orgd0cbe5a">Links</h3>
+<div class="vertical-split"><div>
+
+<div class="org-src-container">
+<label class="org-src-name">Loose</label>
+<pre class="fragment (appear)"><code class="elixir" >iex&gt; pid = spawn(fn -&gt;
+  Process.sleep(5_000)
+  raise "error"
+end)
+#PID&lt;0.118.0&gt;
+
+iex&gt; send(pid, :request)
+:request
+
+iex&gt; receive do
+  response -&gt; response
+end
+... blocks forever since process will die ...
+</code></pre>
+</div>
+
+</div><div>
+
+<div class="org-src-container">
+<label class="org-src-name">Linked</label>
+<pre class="fragment (appear)"><code class="elixir" >iex&gt; pid = spawn_link(fn -&gt;
+  Process.sleep(5_000)
+  raise "error"
+end)
+#PID&lt;0.118.0&gt;
+
+iex&gt; send(pid, :request)
+:request
+
+iex&gt; receive do
+  response -&gt; response
+end
+... after 5 seconds when pid dies, so does iex ...
+... crash report ...
+... iex restarts ...
+</code></pre>
+</div>
+
+</div></div>
+
+<aside class="notes">
+<p>
+Every time two processes start having a converstation, an implicit
+dependency is created between them. If process A sends a message to
+process B and B dies without responding, A can either wait forever, or
+give up on having a conversation after a while. Waiting for a limited
+time (timing out) is a valid strategy, but it is vague one: it is
+unclear if the remote end has died or if it's just taking
+long. Off-band messages can arrive in your mailbox.
+</p>
+
+<p>
+Erlang gives us two tools to deal with this problem in a different
+way: Links and Monitors. First let's have a look at links.
+</p>
+
+<p>
+Links: bind processes together. Whenever a process dies, all the
+linked processes receive an exit signal. That exit signal will in turn
+kill the other processes. This enables grouping a set of processes
+together as one unit. This is useful because I can prevent my system
+from accidentally crashing into unstable partial states.
+</p>
+
+<p>
+Links are a tool that lets developers ensure that if a thing fails,
+it fails entirely and leaves behind a clean slate, without impacting
+components that are not involved.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgf553e42">
+<h3 id="orgf553e42">Monitors</h3>
+<div class="org-src-container">
+
+<pre><code class="elixir" >iex&gt; pid = spawn(fn -&gt;
+  Process.sleep(5_000)
+  raise "error"
+end)
+#PID&lt;0.124.0&gt;
+
+iex&gt; Process.monitor(pid)
+#Reference&lt;0.1858197913.2995257347.242321&gt;
+</code></pre>
+</div>
+
+<p>
+&#x2026; after 5 seconds &#x2026;
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="elixir" >16:24:40.967 [error] Process #PID&lt;0.124.0&gt; raised an exception
+ ** (RuntimeError) error
+    (stdlib 3.12) erl_eval.erl:678: :erl_eval.do_apply/6
+
+iex&gt; flush
+{:DOWN, #Reference&lt;0.1858197913.2995257347.242321&gt;, :process, #PID&lt;0.124.0&gt;,
+ {%RuntimeError{message: "error"},
+  [{:erl_eval, :do_apply, 6, [file: 'erl_eval.erl', line: 678]}]}}
+:ok
+</code></pre>
+</div>
+
+<aside class="notes">
+<p>
+Monitor: being an observer of another process. If it dies or just
+stops, you get a message in your mailbox. This enables processes to
+detect failure in other processes they cooperate with, without it
+taking them down as well (as with links).
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org65db22e">
+<h3 id="org65db22e">OTP</h3>
+
+<div class="figure">
+<p><img src="./images/otp.png" alt="otp.png" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+Erlang comes prepackaged with the Open Telecom Platform (OTP)
+library. The name might be confusing at first, it is actually just a
+part of Erlang's standard library that is used <b>since 1998</b> to build
+fault tolerance into systems.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org967f708">
+<h3 id="org967f708">Supervisors</h3>
+
+<div class="figure">
+<p><img src="./images/supervisor-tree.png" alt="supervisor-tree.png" width="60%" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+One of the tools in the OTP library is: Supervisors.
+</p>
+
+<p>
+Supervisors arrange processes in a supervised hierarchy. They use
+links and monitors to bind processes together in groups. If one of the
+processes dies, the supervisor tries to heal by taking action
+according to a chosen strategy.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org3d959db">
+<h4 id="org3d959db">Strategies</h4>
+
+<div class="figure">
+<p><img src="./images/supervisor-strategies.png" alt="supervisor-strategies.png" width="60%" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+The first one is 'one for one'. This replaces the child process that
+died. This is a strategy to use whenever the children of that
+supervisor are independent from each other.
+</p>
+
+<p>
+The second strategy is 'one for all'. This one is to be used when the
+children depend on each other. When any of them dies, the supervisor
+then kills the other children before starting them all back.
+</p>
+
+<p>
+You would use this when losing a specific child would leave the other
+processes in an uncertain state. Imagine a conversation between
+three processes that ends with a vote. If one of the process dies
+during the vote, it is possible that we have not programmed any code
+to handle that. Replacing that dead process with a new one would now
+bring a new peer to a table that has no idea what is going on either!
+</p>
+
+<p>
+This inconsistent state is possibly dangerous to be in if we haven't
+defined what goes on when a process dies in a voting procedure. It is
+probably safer to just kill all processes, and start afresh from a
+known stable state. By doing so, we're limiting the scope of errors:
+it is better to crash early and suddenly than to slowly corrupt data
+on a long-term basis.
+</p>
+
+<p>
+The last strategy happens whenever there is a dependency between
+processes according to their booting order. Its called 'rest for one'
+and if a child process dies, only those booted after it are
+killed. Processes are then restarted as expected.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org4175fcb">
+<h4 id="org4175fcb">Supervisor example</h4>
+<div class="vertical-split"><div>
+
+<div class="org-src-container">
+<label class="org-src-name">Worker</label>
+<pre class="fragment (appear)"><code class="elixir" >defmodule Ping do
+  use GenServer
+
+  def start_link(_) do
+    GenServer.start_link(__MODULE__, nil, name: __MODULE__)
+  end
+
+  def init(state) do
+    {:ok, state}
+  end
+
+  def handle_call(:ping, _from, state) do
+    {:reply, :pong, state}
+  end
+end
+</code></pre>
+</div>
+
+</div><div>
+
+<div class="org-src-container">
+<label class="org-src-name">Crash</label>
+<pre class="fragment (appear)"><code class="elixir" >iex&gt; Ping.start_link(nil)
+{:ok, #PID&lt;0.232.0&gt;}
+
+iex&gt; GenServer.call(Ping, :ping)
+:pong
+
+iex&gt; GenServer.call(Ping, :wrong)
+... crashes and worker is dead now ...
+</code></pre>
+</div>
+
+<br/>
+
+<div class="org-src-container">
+<label class="org-src-name">Supervised</label>
+<pre class="fragment (appear)"><code class="elixir" >iex&gt; Supervisor.start_link([Ping], strategy: :one_for_one)
+{:ok, #PID&lt;0.239.0&gt;}
+
+iex&gt; GenServer.call(Ping, :wrong)
+... crashes, but supervisor restarts the worker...
+
+iex&gt; GenServer.call(Ping, :ping)
+:pong
+</code></pre>
+</div>
+
+</div></div>
+
+</section>
+</section>
+<section>
+<section id="slide-org0e17cfe">
+<h2 id="org0e17cfe">Demo</h2>
+
+<div class="figure">
+<p><img src="./images/demo-time.jpg" alt="demo-time.jpg" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+<a href="https://github.com/c0deaddict/demo_system">https://github.com/c0deaddict/demo_system</a>
+</p>
+
+<p>
+Demo from "The Soul of Erlang and Elixir" by Sasa Juric
+(<a href="https://www.youtube.com/watch?v=JvBT4XBdoUE">https://www.youtube.com/watch?v=JvBT4XBdoUE</a>)
+</p>
+
+<p>
+<code>_build/prod/rel/example_system/bin/example_system start</code>
+</p>
+
+<ul>
+<li>Start 10000 jobs. Each job is a loop that does some CPU bound
+operations, and sends the result to a central process indicating a
+success. Then it sleeps for single second.</li>
+<li>Now we can test the system via a simple endpoint that calculates a
+sum of numbers.</li>
+
+<li>Webpage communicates via WebSocket to the backend system.</li>
+<li>Each websocket connection is running in it's own process. So that
+means each user has it's own process in the backend.</li>
+<li>The calculation is performed in a one-off process, that is spawned
+by the connection process. The calculation proces sends it's result
+back to the connection process, which forwards it to the user.</li>
+<li>Why the difficult structure? To increase fault tolerance and concurrency.</li>
+
+<li>Let's see how it behaves with some bugs.</li>
+
+<li>13 (special number)
+<ul>
+<li>The calculation process crashes. Crash is reported to the log
+(show) and isolated (everything keeps running). When a processes
+terminates (crash or normally), other process can be notified of
+this. That is what is happening here: the connection process is
+notified and responds with an error message to the user.</li>
+
+</ul></li>
+
+<li>99999999999 (big number)
+<ul>
+<li>Scheduler usage goes up to 100% but jobs keep running at 10k/s.</li>
+<li>BEAM does very frequent process switching (under 1ms) and with
+proper preemption (no matter what the process does, it gets
+preempted). <b>BEAM promotes the progress of the system as a whole</b>,
+this is what high availability is about.</li>
+
+</ul></li>
+
+<li>-1 (naive sum implementation)
+<ul>
+<li>Scheduler maxes out: but it is still available.</li>
+<li>BEAM is highly introspectible and observable. This is what I
+always found hard about the JVM..</li>
+<li><code>_build/prod/rel/example_system/bin/example_system remote</code></li>
+<li>Console process is running in the same scheduler! That this even works owes to BEAM preemption!</li>
+<li><code>Process.list()</code></li>
+<li><code>hd(Process.list()) |&gt; Process.info()</code></li>
+<li>We're interested in <code>reductions</code></li>
+<li><code>Runtime.top()</code> shows processes with most reductions</li>
+<li><code>pid = hd(Runtime.top()).pid</code></li>
+<li><code>Process.info(pid, :current_stacktrace)</code></li>
+<li><code>Runtime.trace(pid)</code> traces execution of the process for a short while</li>
+<li><code>Process.exit(pid, :kill)</code> effectively kill -9</li>
+<li>Notice: user gets <code>error</code> back, this can't be try-catched, but a
+notification is sent to the parent process.</li>
+
+</ul></li>
+
+<li>-1 (again)
+<ul>
+<li>Wonderful tool: <code>:observer.start</code></li>
+
+</ul></li>
+
+<li>Let's fix the bugs in the code
+<ul>
+<li><code>div(n * (n + 1), 2)</code> in math.ex</li>
+<li>uncomment invalid input line in sum.ex</li>
+<li>run <code>mix test</code></li>
+<li><code>mix system.upgrade</code> deploy changes to production (without
+restarting!)  Erlang can hold two versions of a module in memory:
+an old and new version. When no processes are running the old code
+anymore, it is purged.</li>
+<li>bugs have been fixed!</li>
+
+</ul></li>
+
+<li>Clustering
+<ul>
+<li>Distributed BEAM</li>
+<li>Connected via TCP</li>
+<li>Spawn process anywhere in cluster</li>
+<li>Send/receive messages from processes in cluster</li>
+<li>Code is the same for single node and distributed for the most part</li>
+<li>Start another node: <code>mix system.node2</code></li>
+<li>Start service 'foo' and 'bar'</li>
+<li>Kill node2, bar is resurrected on node1.</li>
+
+</ul></li>
+
+</ul>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd3bd42d">
+<h2 id="orgd3bd42d">Showcases</h2>
+<div class="outline-text-2" id="text-orgd3bd42d">
+</div>
+</section>
+<section id="slide-org57a02e0">
+<h3 id="org57a02e0">WhatsApp</h3>
+<p>
+<i>At Facebook acquisition in 2014</i>
+</p>
+
+<ul>
+<li><b>450 million</b> active users</li>
+<li><b>54 billion</b> peak messages/day on 2013-12-31</li>
+<li><b>2 million</b> TCP/IP peak connections (per server)</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+WhatsApp is using Erlang for their backend services. Even the
+distributed database is in Erlang (Mnesia).
+</p>
+
+<p>
+The most astonishing thing is that (in 2014) their entire engineering
+team consisted of only 32 engineers. Of whom only 10 worked on the
+server team. The server team of just 10 people, was responsible for
+new features, maintaining existing features, <b>and supported the whole
+system</b>. Basically, they were also the ones who got woken up in the
+middle of the night if something went wrong.
+</p>
+
+<p>
+WhatsApp achieved 2 million TCP/IP connections (each managed by a
+process) on a single BEAM instance back in 2012. Though they scaled it
+down to <i>just</i> 1 million to have some room for peak hours.
+</p>
+
+<p>
+Erlang is one of the things that enabled WhatsApp to scale up to the
+size they are now.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgdd88a4f">
+<h3 id="orgdd88a4f">Ericsson</h3>
+<p>
+Uptime: <b>99.9999999%</b> over 20 years
+</p>
+
+
+<div class="figure">
+<p><img src="./images/ericsson-axd-1.png" alt="ericsson-axd-1.png" width="35%" />
+</p>
+<p><span class="figure-number">Figure 9: </span>AXD301 ATM switch</p>
+</div>
+
+<aside class="notes">
+<p>
+This is the Ericsson AXD301 which was launched in 1998: a
+high-performance highly-reliable ATM switch.
+</p>
+
+<p>
+This is the Erlang flagship project with over over 2 million lines of
+Erlang running in it.
+</p>
+
+<p>
+The AXD301 has achieved a NINE nines reliability. Let's put this in
+context: 5 nines is good (5.2 minutes of downtime/year). 7 nines
+almost unachievable &#x2026; Ericsson did 9.
+</p>
+
+<p>
+In 2014, Ericsson reported Erlang was being used in its support nodes,
+and in GPRS, 3G and LTE mobile networks worldwide and also by Nortel
+and T-Mobile.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-org3ade1fa">
+<h3 id="org3ade1fa">Nintendo</h3>
+<p>
+Switch Push Notification Infrastructure (NPNS)
+</p>
+
+<p>
+<i>In June 2019</i>
+</p>
+
+<ul>
+<li><b>10 million</b> simultaneous connections</li>
+<li><b>2 billion</b> messages per day</li>
+<li><b>100-200K</b> connections per node and <b>600 messages/s</b></li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Large-scale realtime messaging service based on ejabberd for the
+Nintendo Switch. Thanks to the enormous scalability and throughput of
+Erlang, the project was implemented in just 6 months, with 1 month of
+prototyping. It's been up and running ever since without major issues.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgba768ad">
+<h3 id="orgba768ad">&#x2026; and more</h3>
+<ul>
+<li>2600Hz</li>
+<li>Cisco</li>
+<li>Discord</li>
+<li>Facebook</li>
+<li>Goldman Sachs</li>
+<li>Klarna</li>
+<li>Mitel</li>
+<li>Pinterest</li>
+<li>Wavenet</li>
+<li>&#x2026;</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf89883e">
+<h2 id="orgf89883e">There is more&#x2026;</h2>
+<p>
+&#x2026; much more
+</p>
+
+<ul>
+<li>Distributed</li>
+<li>Phoenix</li>
+<li>Mnesia</li>
+<li>Macro's</li>
+<li>Runtime introspection</li>
+<li>Pattern matching</li>
+<li>Binary destructuring</li>
+<li>Live code reloading</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Too much for this presentation, if you'd like to know me more I can
+give you some pointers.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org6648dc3">
+<h2 id="org6648dc3">Conclusion</h2>
+<ul>
+<li class="fragment appear">Elixir has unique properties that suit our business</li>
+<li class="fragment appear">We should start exploring this at Spindle &#x2026;</li>
+<li class="fragment appear">&#x2026; I made a start with <i>VMex</i> (the middleware)</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Erlang originated in the telecom sector and has a proven to be a great
+model for web-scale systems.
+</p>
+
+<p>
+Building systems that are:
+</p>
+<ul>
+<li>Concurrent</li>
+<li>Highly available</li>
+<li>Distributed</li>
+<li>Scalable</li>
+<li>Fault tolerant</li>
+
+</ul>
+
+<p>
+Is more relevant then ever, especially in our field of work.
+</p>
+
+</aside>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js-3.9.2/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+width:1920, height:1080, margin:0.04,
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js-3.9.2/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+ { src: './reveal.js-3.9.2/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
