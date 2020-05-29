@@ -2,7 +2,7 @@
 
 Slides of the talk I gave about Elixir on 29th of May 2020 at Spindle.
 
-The [[https://c0deaddict.github.io/talk-about-nix-2018/][slides]] are generated from [[./index.org][this]] Org file with [[https://github.com/yjwen/org-reveal/][org-reveal]].
+The [[https://c0deaddict.github.io/elixir-talk-2020/][slides]] are generated from [[./index.org][this]] Org file with [[https://github.com/yjwen/org-reveal/][org-reveal]].
 If you want to do this yourself you need Emacs and install the
 org-reveal package. Then open the =index.org= file and press =C-c C-e R
 R= this will generate the =index.html= file.
