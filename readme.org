@@ -1,8 +1,15 @@
 * Elixir Talk (2020)
 
+Slides of the talk I gave about Elixir on 29th of May 2020 at Spindle.
+
 The [[https://c0deaddict.github.io/talk-about-nix-2018/][slides]] are generated from [[./index.org][this]] Org file with [[https://github.com/yjwen/org-reveal/][org-reveal]].
 If you want to do this yourself you need Emacs and install the
 org-reveal package. Then open the =index.org= file and press =C-c C-e R
 R= this will generate the =index.html= file.
 
 In the presentation press =s= to open the speaker notes.
+
+** Demo
+
+Here are the [[https://github.com/c0deaddict/demo_system][sources for the demo]]. Demo is originally by Saša Jurić,
+used in his excellent talk [[https://www.youtube.com/watch?v=JvBT4XBdoUE][The Soul of Erlang and Elixir]]
