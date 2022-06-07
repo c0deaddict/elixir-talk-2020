@@ -3,36 +3,28 @@
 <head>
 <meta charset="utf-8"/>
 <title>A sip of Elixir</title>
-<meta name="author" content="(Jos van Bakel)"/>
+<meta name="author" content="Jos van Bakel"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="./reveal.js-3.9.2/css/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="./reveal.js-3.9.2/css/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
 
 <link rel="stylesheet" href="custom.css"/>
-<link rel="stylesheet" href="monokai.css"/>
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = './reveal.js-3.9.2/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
-</script>
-</head>
+<link rel="stylesheet" href="monokai.css"/></head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">A sip of Elixir</h1><h2 class="author">Jos van Bakel</h2><p class="date">Created: 2020-05-29 Fri 09:08</p>
+<section id="sec-title-slide"><h1 class="title">A sip of Elixir</h1><p class="subtitle"></p>
+<h2 class="author">Jos van Bakel</h2><p class="date">Created: 2022-06-07 Tue 22:11</p>
 </section>
 
 <section>
-<section id="slide-orge9c834b">
-<h2 id="orge9c834b">Pre</h2>
+<section id="slide-orgefd7df3">
+<h2 id="orgefd7df3">Pre</h2>
 <ul>
 <li>Please mute your mic</li>
 <li>Ask questions through chat</li>
@@ -42,8 +34,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org88d6d76">
-<h2 id="org88d6d76">Agenda</h2>
+<section id="slide-org1e70454">
+<h2 id="org1e70454">Agenda</h2>
 <ul>
 <li>What is it?</li>
 <li>Why?</li>
@@ -74,8 +66,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org5cf69eb">
-<h2 id="org5cf69eb">What is it?</h2>
+<section id="slide-orgdc917df">
+<h2 id="orgdc917df">What is it?</h2>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -115,7 +107,7 @@
 </table>
 
 
-<div class="figure">
+<div id="orgae1c3a1" class="figure">
 <p><img src="./images/ecosystem.png" alt="ecosystem.png" width="25%" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Erlang ecosystem</p>
@@ -138,7 +130,7 @@ words Elixir and Erlang mostly interchangeably.
 </aside>
 
 </section>
-<section id="slide-org5cf69eb-split">
+<section id="slide-orgdc917df-split">
 
 <h2>What is it?</h2>
 
@@ -161,7 +153,7 @@ is in this presentation and in the demo that will come at the end.
 </aside>
 
 </section>
-<section id="slide-org5cf69eb-split">
+<section id="slide-orgdc917df-split">
 
 <h2>What is it?</h2>
 
@@ -178,8 +170,8 @@ to focus much on this.
 </section>
 </section>
 <section>
-<section id="slide-orgd024018">
-<h2 id="orgd024018">Why?</h2>
+<section id="slide-org1ee534e">
+<h2 id="org1ee534e">Why?</h2>
 <ul>
 <li class="fragment appear">Advent of Code 2019</li>
 <li class="fragment appear">Vialer Middleware rewrite (VMex)</li>
@@ -229,10 +221,10 @@ My goal with this presentation is:
 </section>
 </section>
 <section>
-<section id="slide-org522c888">
-<h2 id="org522c888">A bit of history</h2>
+<section id="slide-orgd6421d1">
+<h2 id="orgd6421d1">A bit of history</h2>
 
-<div class="figure">
+<div id="orgee07860" class="figure">
 <p><img src="./images/history.jpg" alt="history.jpg" />
 </p>
 </div>
@@ -289,10 +281,10 @@ What makes Elixir great?
 </section>
 </section>
 <section>
-<section id="slide-orgef0c5d0">
-<h2 id="orgef0c5d0">What's different?</h2>
+<section id="slide-org7c4049a">
+<h2 id="org7c4049a">What's different?</h2>
 
-<div class="figure">
+<div id="orgaedb152" class="figure">
 <p><img src="./images/let-it-crash.png" alt="let-it-crash.png" />
 </p>
 </div>
@@ -323,10 +315,10 @@ with inside the application at a granularity defined by the developer.
 </aside>
 
 </section>
-<section id="slide-orge69b70e">
-<h3 id="orge69b70e">Why does restarting work?</h3>
+<section id="slide-org65ab623">
+<h3 id="org65ab623">Why does restarting work?</h3>
 
-<div class="figure">
+<div id="orgac06c71" class="figure">
 <p><img src="./images/off-and-on.jpg" alt="off-and-on.jpg" width="50%" />
 </p>
 </div>
@@ -386,8 +378,8 @@ be investigated.
 </section>
 </section>
 <section>
-<section id="slide-org042061c">
-<h2 id="org042061c">Short tour</h2>
+<section id="slide-org553a9bd">
+<h2 id="org553a9bd">Short tour</h2>
 <aside class="notes">
 <p>
 For the sake of brevity I'm going to skip a general introduction of
@@ -398,13 +390,13 @@ language unique.
 </aside>
 
 </section>
-<section id="slide-org6711559">
-<h3 id="org6711559">Processes</h3>
+<section id="slide-org9250a56">
+<h3 id="org9250a56">Processes</h3>
 <div class="vertical-split"><div>
 
 <div class="org-src-container">
 <label class="org-src-name">Spawn</label>
-<pre class="fragment (appear)"><code class="elixir" >iex&gt; pid = spawn(fn -&gt; 1 + 2 end)
+<pre  class="fragment (appear)"  ><code class="elixir" >iex&gt; pid = spawn(fn -&gt; 1 + 2 end)
 #PID&lt;0.44.0&gt;
 
 iex&gt; Process.alive?(pid)
@@ -414,7 +406,7 @@ false
 
 <div class="org-src-container">
 <label class="org-src-name">Kill</label>
-<pre class="fragment (appear)"><code class="elixir" >iex&gt; pid = spawn(fn -&gt;
+<pre  class="fragment (appear)"  ><code class="elixir" >iex&gt; pid = spawn(fn -&gt;
   Process.sleep(:infinity)
 end)
 #PID&lt;0.44.0&gt;
@@ -431,7 +423,7 @@ true
 
 <div class="org-src-container">
 <label class="org-src-name">Isolation</label>
-<pre class="fragment (appear)"><code class="elixir" >iex&gt; x = 1
+<pre  class="fragment (appear)"  ><code class="elixir" >iex&gt; x = 1
 
 iex&gt; Task.async(fn -&gt; x = 3 end) |&gt; Task.await
 3
@@ -487,13 +479,13 @@ Explain code above.
 </aside>
 
 </section>
-<section id="slide-org114e47b">
-<h3 id="org114e47b">Message passing</h3>
+<section id="slide-orgddd4df1">
+<h3 id="orgddd4df1">Message passing</h3>
 <div class="vertical-split"><div>
 
 <div class="org-src-container">
 <label class="org-src-name">Process A</label>
-<pre><code class="elixir" >send(
+<pre   ><code class="elixir" >send(
   process_b,
   {:hello, self()}
 )
@@ -509,7 +501,7 @@ end
 
 <div class="org-src-container">
 <label class="org-src-name">Process B</label>
-<pre><code class="elixir" >receive do
+<pre   ><code class="elixir" >receive do
   {:hello, from} -&gt;
     send(from, "Hello there")
 
@@ -538,13 +530,13 @@ process a) is sent as message.
 </aside>
 
 </section>
-<section id="slide-orgd0cbe5a">
-<h3 id="orgd0cbe5a">Links</h3>
+<section id="slide-orgbecb42f">
+<h3 id="orgbecb42f">Links</h3>
 <div class="vertical-split"><div>
 
 <div class="org-src-container">
 <label class="org-src-name">Loose</label>
-<pre class="fragment (appear)"><code class="elixir" >iex&gt; pid = spawn(fn -&gt;
+<pre  class="fragment (appear)"  ><code class="elixir" >iex&gt; pid = spawn(fn -&gt;
   Process.sleep(5_000)
   raise "error"
 end)
@@ -564,7 +556,7 @@ end
 
 <div class="org-src-container">
 <label class="org-src-name">Linked</label>
-<pre class="fragment (appear)"><code class="elixir" >iex&gt; pid = spawn_link(fn -&gt;
+<pre  class="fragment (appear)"  ><code class="elixir" >iex&gt; pid = spawn_link(fn -&gt;
   Process.sleep(5_000)
   raise "error"
 end)
@@ -617,11 +609,11 @@ components that are not involved.
 </aside>
 
 </section>
-<section id="slide-orgf553e42">
-<h3 id="orgf553e42">Monitors</h3>
+<section id="slide-orgdd9e059">
+<h3 id="orgdd9e059">Monitors</h3>
 <div class="org-src-container">
 
-<pre><code class="elixir" >iex&gt; pid = spawn(fn -&gt;
+<pre   ><code class="elixir" >iex&gt; pid = spawn(fn -&gt;
   Process.sleep(5_000)
   raise "error"
 end)
@@ -638,7 +630,7 @@ iex&gt; Process.monitor(pid)
 
 <div class="org-src-container">
 
-<pre><code class="elixir" >16:24:40.967 [error] Process #PID&lt;0.124.0&gt; raised an exception
+<pre   ><code class="elixir" >16:24:40.967 [error] Process #PID&lt;0.124.0&gt; raised an exception
  ** (RuntimeError) error
     (stdlib 3.12) erl_eval.erl:678: :erl_eval.do_apply/6
 
@@ -661,10 +653,10 @@ taking them down as well (as with links).
 </aside>
 
 </section>
-<section id="slide-org65db22e">
-<h3 id="org65db22e">OTP</h3>
+<section id="slide-org47de883">
+<h3 id="org47de883">OTP</h3>
 
-<div class="figure">
+<div id="org2b3b189" class="figure">
 <p><img src="./images/otp.png" alt="otp.png" />
 </p>
 </div>
@@ -680,10 +672,10 @@ fault tolerance into systems.
 </aside>
 
 </section>
-<section id="slide-org967f708">
-<h3 id="org967f708">Supervisors</h3>
+<section id="slide-org267f660">
+<h3 id="org267f660">Supervisors</h3>
 
-<div class="figure">
+<div id="org6b62050" class="figure">
 <p><img src="./images/supervisor-tree.png" alt="supervisor-tree.png" width="60%" />
 </p>
 </div>
@@ -703,10 +695,10 @@ according to a chosen strategy.
 </aside>
 
 </section>
-<section id="slide-org3d959db">
-<h4 id="org3d959db">Strategies</h4>
+<section id="slide-org250c669">
+<h4 id="org250c669">Strategies</h4>
 
-<div class="figure">
+<div id="org4b7a8a9" class="figure">
 <p><img src="./images/supervisor-strategies.png" alt="supervisor-strategies.png" width="60%" />
 </p>
 </div>
@@ -752,13 +744,13 @@ killed. Processes are then restarted as expected.
 </aside>
 
 </section>
-<section id="slide-org4175fcb">
-<h4 id="org4175fcb">Supervisor example</h4>
+<section id="slide-orgb8cf9c5">
+<h4 id="orgb8cf9c5">Supervisor example</h4>
 <div class="vertical-split"><div>
 
 <div class="org-src-container">
 <label class="org-src-name">Worker</label>
-<pre class="fragment (appear)"><code class="elixir" >defmodule Ping do
+<pre  class="fragment (appear)"  ><code class="elixir" >defmodule Ping do
   use GenServer
 
   def start_link(_) do
@@ -780,7 +772,7 @@ end
 
 <div class="org-src-container">
 <label class="org-src-name">Crash</label>
-<pre class="fragment (appear)"><code class="elixir" >iex&gt; Ping.start_link(nil)
+<pre  class="fragment (appear)"  ><code class="elixir" >iex&gt; Ping.start_link(nil)
 {:ok, #PID&lt;0.232.0&gt;}
 
 iex&gt; GenServer.call(Ping, :ping)
@@ -795,7 +787,7 @@ iex&gt; GenServer.call(Ping, :wrong)
 
 <div class="org-src-container">
 <label class="org-src-name">Supervised</label>
-<pre class="fragment (appear)"><code class="elixir" >iex&gt; Supervisor.start_link([Ping], strategy: :one_for_one)
+<pre  class="fragment (appear)"  ><code class="elixir" >iex&gt; Supervisor.start_link([Ping], strategy: :one_for_one)
 {:ok, #PID&lt;0.239.0&gt;}
 
 iex&gt; GenServer.call(Ping, :wrong)
@@ -811,10 +803,10 @@ iex&gt; GenServer.call(Ping, :ping)
 </section>
 </section>
 <section>
-<section id="slide-org0e17cfe">
-<h2 id="org0e17cfe">Demo</h2>
+<section id="slide-org512bff9">
+<h2 id="org512bff9">Demo</h2>
 
-<div class="figure">
+<div id="org728c78c" class="figure">
 <p><img src="./images/demo-time.jpg" alt="demo-time.jpg" />
 </p>
 </div>
@@ -929,13 +921,13 @@ anymore, it is purged.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgd3bd42d">
-<h2 id="orgd3bd42d">Showcases</h2>
-<div class="outline-text-2" id="text-orgd3bd42d">
+<section id="slide-orgf924401">
+<h2 id="orgf924401">Showcases</h2>
+<div class="outline-text-2" id="text-orgf924401">
 </div>
 </section>
-<section id="slide-org57a02e0">
-<h3 id="org57a02e0">WhatsApp</h3>
+<section id="slide-org8683a61">
+<h3 id="org8683a61">WhatsApp</h3>
 <p>
 <i>At Facebook acquisition in 2014</i>
 </p>
@@ -976,17 +968,17 @@ size they are now.
 </aside>
 
 </section>
-<section id="slide-orgdd88a4f">
-<h3 id="orgdd88a4f">Ericsson</h3>
+<section id="slide-org286ddf7">
+<h3 id="org286ddf7">Ericsson</h3>
 <p>
 Uptime: <b>99.9999999%</b> over 20 years
 </p>
 
 
-<div class="figure">
+<div id="org0829dc4" class="figure">
 <p><img src="./images/ericsson-axd-1.png" alt="ericsson-axd-1.png" width="35%" />
 </p>
-<p><span class="figure-number">Figure 9: </span>AXD301 ATM switch</p>
+<p><span class="figure-number">Figure 2: </span>AXD301 ATM switch</p>
 </div>
 
 <aside class="notes">
@@ -1015,8 +1007,8 @@ and T-Mobile.
 </aside>
 
 </section>
-<section id="slide-org3ade1fa">
-<h3 id="org3ade1fa">Nintendo</h3>
+<section id="slide-orgd00a2ce">
+<h3 id="orgd00a2ce">Nintendo</h3>
 <p>
 Switch Push Notification Infrastructure (NPNS)
 </p>
@@ -1043,8 +1035,8 @@ prototyping. It's been up and running ever since without major issues.
 </aside>
 
 </section>
-<section id="slide-orgba768ad">
-<h3 id="orgba768ad">&#x2026; and more</h3>
+<section id="slide-org5382a49">
+<h3 id="org5382a49">&#x2026; and more</h3>
 <ul>
 <li>2600Hz</li>
 <li>Cisco</li>
@@ -1062,8 +1054,8 @@ prototyping. It's been up and running ever since without major issues.
 </section>
 </section>
 <section>
-<section id="slide-orgf89883e">
-<h2 id="orgf89883e">There is more&#x2026;</h2>
+<section id="slide-org588d9a7">
+<h2 id="org588d9a7">There is more&#x2026;</h2>
 <p>
 &#x2026; much more
 </p>
@@ -1091,8 +1083,8 @@ give you some pointers.
 </section>
 </section>
 <section>
-<section id="slide-org6648dc3">
-<h2 id="org6648dc3">Conclusion</h2>
+<section id="slide-org9b840bc">
+<h2 id="org9b840bc">Conclusion</h2>
 <ul>
 <li class="fragment appear">Elixir has unique properties that suit our business</li>
 <li class="fragment appear">We should start exploring this at Spindle &#x2026;</li>
@@ -1127,24 +1119,19 @@ Is more relevant then ever, especially in our field of work.
 </section>
 </div>
 </div>
-<script src="./reveal.js-3.9.2/js/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+
 
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-width:1920, height:1080, margin:0.04,
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
- { src: './reveal.js-3.9.2/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
- { src: './reveal.js-3.9.2/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+plugins: [RevealHighlight, RevealNotes],
+width:1920, height:1080, margin:0.04
 });
+
 </script>
 </body>
 </html>

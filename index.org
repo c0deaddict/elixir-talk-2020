@@ -1,5 +1,5 @@
 #+options: num:nil date:nil toc:nil
-#+reveal_root: ./reveal.js-3.9.2
+#+reveal_root: https://cdn.jsdelivr.net/npm/reveal.js
 #+reveal_trans: slide
 #+reveal_theme: moon
 #+reveal_extra_css: custom.css
